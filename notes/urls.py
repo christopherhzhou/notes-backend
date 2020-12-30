@@ -1,6 +1,4 @@
-from django.urls import include, path
-from django.contrib import admin
-from rest_framework import routers
+from django.urls import path
 from . import views
 
 # Wire up our API using automatic URL routing.
