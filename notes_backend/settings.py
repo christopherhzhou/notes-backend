@@ -1,5 +1,7 @@
 import os
+from datetime import timedelta
 from secret import secret_key
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,6 +30,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'notes',
+    'notes_auth',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +116,18 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+}
 
 
 # CORS
