@@ -15,8 +15,8 @@ def note_api_overview(request):
         'List': '/note/',
         'Detail': '/note/<int:pk>',
         'Create': '/note-create/',
-        'Update': '/note-update/',
-        'Delete': '/note-delete/',
+        'Update': '/note-update/<int:pk>',
+        'Delete': '/note-delete/<int:pk>',
     }
     return Response(api_urls)
 

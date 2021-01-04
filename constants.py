@@ -1,11 +1,11 @@
 class AuthConstants:
     # success statuses
-    TOKEN_VALID = 'token_valid'
+    TOKEN_VALID = 'TOKEN_VALID'
 
-    ACCOUNT_CREATED = 'account_created'
+    ACCOUNT_CREATED = 'ACCOUNT_CREATED'
 
     # fail statuses
-    TOKEN_MISSING = 'token_missing'
+    TOKEN_MISSING = 'TOKEN_MISSING'
     EMAIL_IN_USE = 'EMAIL_IN_USE'
     USERNAME_IN_USE = 'USERNAME_IN_USE'
     EMAIL_NOT_WHITELISTED = 'EMAIL_NOT_WHITELISTED'
