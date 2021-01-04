@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from .serializers import UserSerializer
 from .models import SafeEmail
@@ -30,8 +31,16 @@ def register(request):
 
     if serialized_user.is_valid():
         serialized_user.save()
-        print(serialized_user)
-        return Response('Account created!', status=status.HTTP_201_CREATED)
+        curr_user = User.objects.get(id=serialized_user.instance.id)
+        refresh = RefreshToken.for_user(curr_user)
+
+        acc_created_res = {
+            'code': AuthConstants.ACCOUNT_CREATED,
+            'message': 'Account created!',
+            'token': str(refresh.access_token),
+        }
+
+        return Response(acc_created_res, status=status.HTTP_201_CREATED)
 
     return Response('The given username is already in use.', status=status.HTTP_401_UNAUTHORIZED)
 
